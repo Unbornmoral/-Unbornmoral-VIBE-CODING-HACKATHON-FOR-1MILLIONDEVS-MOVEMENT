@@ -1,0 +1,269 @@
+/*
+  style.css
+  ----------------------
+  This stylesheet provides the visual design for the Vibe Coding Hackathon Project web app.
+
+  Features:
+  - Uses Google Fonts (Poppins) for a modern, professional look.
+  - Sets a business-themed background with an Unsplash image and a dark gradient overlay for readability.
+  - Styles the header, dashboard, forms, and transaction list for a clean, user-friendly interface.
+  - Responsive design for mobile and desktop screens.
+  - Animations for smooth UI transitions.
+
+  Main Sections:
+  - body: Base font, background, and color settings.
+  - header: App title and subtitle styling.
+  - main: Container for dashboard and content.
+  - .dashboard: Summary cards for income, expenses, and profit.
+  - #manual-form: Form for manual transaction entry.
+  - .transactions: List of transactions with delete button.
+  - Responsive and animation rules at the end.
+
+  Author: [Your Name]
+  Last updated: May 2025
+*/
+
+/* Google Fonts for professional look */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+/* Business & Voice themed background using Unsplash image link */
+body {
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #232526 0%, #414345 100%), url('https://images.unsplash.com/photo-1515168833906-d2a3b82b302b?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: #D3D3D3;
+}
+/* Overlay for better readability */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(30, 60, 120, 0.65);
+    z-index: 0;
+    pointer-events: none;
+}
+header {
+    background: rgba(44, 62, 80, 0.95);
+    color: #fff;
+    padding: 2rem 1rem 1rem 1rem;
+    text-align: center;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    box-shadow: 0 4px 24px #0004;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2rem;
+    animation: fadeInDown 0.8s;
+}
+header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 8px #0006;
+}
+header p {
+    font-size: 1.2rem;
+    color: #b0c4de;
+    margin: 0;
+}
+main {
+    max-width: 600px;
+    margin: 2rem auto 0 auto;
+    background: rgba(255,255,255,0.10);
+    border-radius: 18px;
+    box-shadow: 0 4px 32px #0003;
+    padding: 2.5rem 2rem 2rem 2rem;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(6px);
+    animation: fadeInUp 1s;
+}
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+}
+/* Dashboard color update for better harmony with background */
+.dashboard div {
+    background: rgba(79, 140, 255, 0.85);
+    color: #D3D3D3;
+    padding: 1.2rem 0.8rem;
+    border-radius: 16px;
+    width: 32%;
+    text-align: center;
+    box-shadow: 0 2px 12px #0002;
+    border: 2px solid #3566b8;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 1.1rem;
+    animation: fadeIn 1.2s;
+}
+.dashboard div:hover {
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 8px 32px #0004;
+    background: rgba(79, 140, 255, 0.95);
+}
+.dashboard strong {
+    color: #fff;
+    letter-spacing: 1px;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+#income-total, #expense-total, #profit-total {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: 0.5em;
+    color: #fff;
+    text-shadow: 0 2px 8px #0006;
+}
+#profit-total { color: #00e676; }
+#expense-total { color: #ff5252; }
+#income-total { color: #4f8cff; }
+.input-section, #manual-form {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+#manual-form input, #manual-form select {
+    padding: 0.7em 1em;
+    border-radius: 8px;
+    border: 1.5px solid #4f8cff;
+    background: rgba(255,255,255,0.15);
+    color: #D3D3D3;
+    font-size: 1em;
+    outline: none;
+    transition: border 0.2s, background 0.2s;
+}
+#manual-form input:focus, #manual-form select:focus {
+    border: 2px solid #00e676;
+    background: rgba(255,255,255,0.25);
+}
+#manual-form button, button {
+    background: linear-gradient(90deg, #4f8cff 60%, #00e676 100%);
+    color: #fff;
+    border: none;
+    padding: 0.7em 1.5em;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 2px 8px #0002;
+    transition: background 0.2s, transform 0.2s;
+}
+#manual-form button:hover, button:hover {
+    background: linear-gradient(90deg, #00e676 60%, #4f8cff 100%);
+    transform: scale(1.05);
+}
+.input-section label {
+    color: #b0c4de;
+    font-size: 1em;
+    margin-right: 0.5em;
+}
+.input-section input[type="file"] {
+    color: #D3D3D3;
+}
+.transactions {
+    margin-top: 2.5rem;
+    background: rgba(44, 62, 80, 0.7);
+    border-radius: 12px;
+    padding: 1.5rem 1rem 1rem 1rem;
+    box-shadow: 0 2px 12px #0002;
+    animation: fadeInUp 1.2s;
+}
+.transactions h3 {
+    color: #fff;
+    font-size: 1.3em;
+    margin-bottom: 1em;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px #0006;
+}
+.transactions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.transactions li {
+    background: rgba(255,255,255,0.10);
+    margin-bottom: 0.7rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #D3D3D3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 4px #0001;
+    transition: background 0.2s, transform 0.2s;
+    animation: fadeIn 1.3s;
+}
+.transactions li:hover {
+    background: rgba(79, 140, 255, 0.18);
+    transform: scale(1.02);
+}
+.price-option {
+    background: #232526;
+    color: #00e676;
+    border-radius: 4px;
+    padding: 0.1em 0.4em;
+    margin: 0 0.2em;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+}
+.price-option:hover, .price-option.selected {
+    background: #00e676;
+    color: #232526;
+}
+button[aria-label="Delete transaction"] {
+    margin-left: 10px;
+    background: transparent;
+    border: none;
+    color: #ff5252;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+button[aria-label="Delete transaction"]:hover {
+    color: #fff;
+}
+/* Voice icon for the button (optional, using emoji) */
+#voice-btn::before {
+    content: '\1F3A4  ';
+}
+@media (max-width: 700px) {
+    main {
+        padding: 1rem 0.5rem;
+    }
+    .dashboard {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .dashboard div {
+        width: 100%;
+    }
+    #manual-form {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

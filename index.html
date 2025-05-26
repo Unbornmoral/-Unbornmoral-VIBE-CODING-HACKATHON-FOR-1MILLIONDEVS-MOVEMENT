@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Income & Expense Tracker</title>
+    <!-- Favicon for business/finance (free icon from flaticon) -->
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+    <!-- External CSS for business & voice themed styling -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header section -->
+    <header>
+        <h1>Smart Income & Expense Tracker</h1>
+        <p>Track your business finances with voice or photo input!</p>
+    </header>
+    <!-- Main content section -->
+    <main>
+        <!-- Dashboard summary -->
+        <div class="dashboard">
+            <div>
+                <strong>Income</strong>
+                <div id="income-total">$0</div>
+            </div>
+            <div>
+                <strong>Expenses</strong>
+                <div id="expense-total">$0</div>
+            </div>
+            <div>
+                <strong>Profit</strong>
+                <div id="profit-total">$0</div>
+            </div>
+        </div>
+        <!-- Manual transaction input form -->
+        <form id="manual-form" aria-label="Add transaction manually" style="margin-bottom:1.5rem;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+            <input type="text" id="manual-desc" placeholder="Description" aria-label="Description" required style="flex:2;min-width:120px;">
+            <input type="text" id="manual-prices" placeholder="Prices (comma-separated)" aria-label="Prices" required style="flex:2;min-width:120px;">
+            <select id="manual-type" aria-label="Type" required style="flex:1;min-width:80px;">
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+            <button type="submit" aria-label="Add Transaction">Add</button>
+        </form>
+        <!-- Input section for photo and voice -->
+        <div class="input-section">
+            <label for="photo-input">Add by Photo:</label>
+            <input type="file" id="photo-input" accept="image/*">
+            <br><br>
+            <button id="voice-btn" aria-label="Add by Voice">Add by Voice</button>
+        </div>
+        <!-- Transactions list -->
+        <div class="transactions">
+            <h3>Transactions
+                <button id="delete-all-btn" aria-label="Delete all transactions" title="Delete All" style="float:right;background:transparent;border:none;color:#ff5252;font-size:1.5em;cursor:pointer;transition:color 0.2s;">
+                    🗑️
+                </button>
+            </h3>
+            <ul id="transaction-list"></ul>
+        </div>
+    </main>
+    <!-- Main JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
